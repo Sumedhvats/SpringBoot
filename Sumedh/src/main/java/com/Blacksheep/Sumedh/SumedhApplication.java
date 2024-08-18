@@ -6,8 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SumedhApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SumedhApplication.class, args);
-	}
+    public static void main(String[] args) {
+       var ctx= SpringApplication.run(SumedhApplication.class, args);
+		MyFirstService firstService=ctx.getBean(MyFirstService.class);
+		System.out.println(firstService.tellAStory());
+    }
 
 }
