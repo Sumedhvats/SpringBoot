@@ -6,6 +6,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MyFirstService {
+    @Autowired
+    public void injectDependencies(
+            @Qualifier("mySecondClass") MyFirstClass firstClass
+    ){
+        this.firstClass=firstClass;
+    }
 
     public MyFirstService(@Qualifier("mySecondClass") MyFirstClass firstClass) {
         this.firstClass = firstClass;
