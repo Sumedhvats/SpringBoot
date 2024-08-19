@@ -1,24 +1,35 @@
 package com.Blacksheep.Sumedh;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 @Service
+@PropertySource("classpath:custom.properties")
 public class MyFirstService {
-    private MyFirstClass firstClass;
-   // private Environment environment;
-    @Autowired
-    public void injectDependencies(
-            @Qualifier("mySecondClass") MyFirstClass firstClass
-    ){
-        this.firstClass=firstClass;
-    }
-    public MyFirstService(@Qualifier("mySecondClass") MyFirstClass firstClass) {
+    private final MyFirstClass firstClass;
+    @Value("${my.prop}")
+    private String customProperty;
+    public MyFirstService(@Qualifier("myFirstClass") MyFirstClass firstClass) {
         this.firstClass = firstClass;
     }
     public String tellAStory() {
         return "the dependency is saying " + firstClass.sayHello();
     }
+
+    public String getCustomProperty() {
+        return customProperty;
+    }
+
+    // private Environment environment;
+  //  @Autowired
+//    public void injectDependencies(
+//            @Qualifier("mySecondClass") MyFirstClass firstClass
+//    ){
+//        this.firstClass=firstClass;
+//    }
+
 //    public String getJavaVersion() {
 //        return environment.getProperty("java.version");
 //    }

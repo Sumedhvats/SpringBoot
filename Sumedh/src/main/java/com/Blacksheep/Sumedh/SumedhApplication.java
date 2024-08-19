@@ -9,8 +9,9 @@ public class SumedhApplication {
        var ctx= SpringApplication.run(SumedhApplication.class, args);
 		MyFirstService firstService=ctx.getBean(MyFirstService.class);
 		System.out.println(firstService.tellAStory());
-        System.out.println(firstService.getJavaVersion());
-        System.out.println(firstService.getOSVersion());
-        System.out.println(firstService.getProperty());
+        System.out.println(firstService.getCustomProperty());
+//        System.out.println(firstService.getJavaVersion());
+//        System.out.println(firstService.getOSVersion());
+//        System.out.println(firstService.getProperty());
     }
 }
