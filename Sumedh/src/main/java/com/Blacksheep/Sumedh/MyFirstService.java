@@ -11,6 +11,8 @@ public class MyFirstService {
     private final MyFirstClass firstClass;
     @Value("${my.prop}")
     private String customProperty;
+    @Value("${my.custom.properties.int}")
+    private Integer newCustomProperty;
     public MyFirstService(@Qualifier("myFirstClass") MyFirstClass firstClass) {
         this.firstClass = firstClass;
     }
@@ -20,6 +22,10 @@ public class MyFirstService {
 
     public String getCustomProperty() {
         return customProperty;
+    }
+
+    public Integer getNewCustomProperty() {
+        return newCustomProperty;
     }
 
     // private Environment environment;
