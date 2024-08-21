@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FirstController {
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello from my controller";
-    }
+//    @GetMapping("/hello")
+//    public String hello() {
+//        return "hello from my controller";
+//    }
 
     @PostMapping("/post-order")
     public String post(@RequestBody Order order) {
@@ -19,13 +19,25 @@ public class FirstController {
     public String post(@RequestBody String message) {
         return "The message is: " + message;
     }
+
     @PostMapping("/post-order-record")
     public String post(@RequestBody orderRecord order) {
         return "The order is: " + order.toString();
     }
+
     @GetMapping("/hello/{record}")
-    public String getRecord(
+    public String pathVariable(
             @PathVariable("record") String record) {
-        return "Record is "+record;
+        return "Record is " + record;
     }
+
+    @GetMapping("/hello")
+    public String paramVariable(
+            @RequestParam("user-name") String UserName1,
+            @RequestParam("user-Lastname") String UserLastName
+
+            ) {
+            return "My name is  " + UserName1+ " "+UserLastName;
+    }
+
 }
